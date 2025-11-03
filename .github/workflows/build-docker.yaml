@@ -1,0 +1,19 @@
+name: Build and Publish image to Docker Hub
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish_image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build image
+        run: docker build ./api/ -t neyocicd/devops-qr-api:latest .
+      - name: push image to docker hub
+        run: docker push neyocicd/devops-qr-api:latest  
+
+
+      
