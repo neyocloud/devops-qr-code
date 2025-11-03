@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build image
-        run: docker build ./api/ -t neyocicd/devops-qr-api:latest .
+        run: docker build -t neyocicd/devops-qr-api:latest ./api
       - name: push image to docker hub
         run: docker push neyocicd/devops-qr-api:latest  
 
