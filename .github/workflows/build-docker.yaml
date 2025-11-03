@@ -16,8 +16,14 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build image
+      - name: Build backend image
         run: docker build -t neyocicd/devops-qr-api:latest ./api
 
-      - name: Push image
+      - name: Build frontend image
+        run: docker build -t neyocicd/devops-qr-code-frontend:latest ./front-end-nextjs
+
+      - name: Push backend image
         run: docker push neyocicd/devops-qr-api:latest
+
+      - name: Push frontend image
+        run: docker push neyocicd/devops-qr-code-frontend:latest
